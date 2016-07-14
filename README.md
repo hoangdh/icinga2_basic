@@ -1,8 +1,11 @@
 # icinga2 cơ bản (Cấu hình trên CentOS 7)
 
 ### [1. Thêm host bằng Wizard] (#wizard)
+
 - #### [Host Windows] (#w.win) 
+
 - #### [Host Linux] (#w.lin)
+
 ### [2. Thêm host bằng Manual] (#manual)
 
 <a name="wizard"></a>
@@ -117,6 +120,5 @@ Click vào **Tab Overviews > Hosts**
 Chọn host **Windows-7-Demo**
 
 Chúng ta sẽ kiểm tra dịch vụ như DISK, LOAD, PROC,..
-
 
 <img src="http://image.prntscr.com/image/0f479276da6c4d70ae4cb119cefcff1c.png">
