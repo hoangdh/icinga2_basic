@@ -26,7 +26,7 @@ icinga2 pki ticket --cn "Windows-7-Demo"
 <img src="http://image.prntscr.com/image/1f5d3b2b69314194b682c6705a247908.png">
 
 
-**Chú ý:** "Windows-7": là tên của host muốn giám sát, có thể đặt tự do nhưng khi cấu hình agent trên host đó phải điền đúng tên và ticket
+**Chú ý:** **"Windows-7-Demo"**: là tên của host muốn giám sát, có thể đặt tự do nhưng khi cấu hình agent trên host đó phải điền đúng tên và ticket
 
 #### 2. Cấu hình trên host (Windows 7)
 
@@ -56,7 +56,7 @@ Chờ khoảng 1 phút để quá trình cài đặt diễn ra.
 
 Bấm **Finish** để khởi động Agent
 
-img src="http://image.prntscr.com/image/7a528858d5334d418df59e49c2221ec5.png">
+<img src="http://image.prntscr.com/image/7a528858d5334d418df59e49c2221ec5.png">
 
 Bấm vào **Reconfigure** để cấu hình
 
