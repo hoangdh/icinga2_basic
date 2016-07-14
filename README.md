@@ -1,7 +1,9 @@
 # icinga2 cơ bản (Cấu hình trên CentOS 7)
 
-### [1. Thêm host bằng Wizard] (wizard)
-### [2. Thêm host bằng Manual] (manual)
+### [1. Thêm host bằng Wizard] (#wizard)
+- #### [Host Windows] (#w.win) 
+- #### [Host Linux] (#w.lin)
+### [2. Thêm host bằng Manual] (#manual)
 
 <a name="wizard"></a>
 ### Thêm host muốn giám sát bằng Wizard
@@ -31,7 +33,7 @@ icinga2 pki ticket --cn "Windows-7-Demo"
 
 
 **Chú ý:** "Windows-7": là tên của host muốn giám sát, có thể đặt tự do nhưng khi cấu hình agent trên host đó phải điền đúng tên và ticket
-
+<a name="w.win"></a>
 #### 2. Cấu hình trên host (Windows 7)
 
 ##### 2.1 Tải Agent cho Windows
