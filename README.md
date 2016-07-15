@@ -10,7 +10,7 @@
 
 <a name="wizard"></a>
 ### Thêm host muốn giám sát bằng Wizard
-
+<a name="create-ticket"><a/>
 #### 1. Cấu hình trên icinga2
 
 Sử dụng Wizard bằng câu lệnh:
@@ -25,7 +25,7 @@ Khởi động lại icinga2
 ```
 systemctl restart icinga2
 ```
-
+<a name="create-ticket"><a/>
 Tạo Ticket cho host muốn giám sát:
 
 ```
@@ -37,13 +37,13 @@ icinga2 pki ticket --cn "Windows-7-Demo"
 
 **Chú ý:** "Windows-7": là tên của host muốn giám sát, có thể đặt tự do nhưng khi cấu hình agent trên host đó phải điền đúng tên và ticket
 <a name="w.win"></a>
-#### 2. Cấu hình trên host (Windows 7)
+#### 2.1 Cấu hình trên host (Windows 7)
 
-##### 2.1 Tải Agent cho Windows
+##### 2.1.1 Tải Agent cho Windows
 
 https://packages.icinga.org/windows/
 
-##### 2.2 Cài đặt Agent
+##### 2.1.2 Cài đặt Agent
 
 Bấm **Next** để chuyển sang bước tiếp theo
 
@@ -105,7 +105,7 @@ icinga2 node list
 
 <img src="http://image.prntscr.com/image/c787f0da70324d45a14112bc6356c8a3.png">
 
-#### 3. Giám sát trên Web
+#### 2.1.3 Giám sát trên Web
 
 Truy cập vào IP hoặc FQDN của icinga
 
@@ -122,3 +122,73 @@ Chọn host **Windows-7-Demo**
 Chúng ta sẽ kiểm tra dịch vụ như DISK, LOAD, PROC,..
 
 <img src="http://image.prntscr.com/image/0f479276da6c4d70ae4cb119cefcff1c.png">
+
+<a name="w.lin"></a>
+#### 2.2 Cấu hình trên host (Linux)
+
+##### 2.2.1 Tải Agent cho Linux CentOS 6
+
+Mở port trên host
+
+http://prntscr.com/bt6r48
+
+Thêm repo của icinga2 vào host
+
+```
+rpm -i https://packages.icinga.org/epel/6/release/noarch/icinga-rpm-release-6-1.el6.noarch.rpm
+```
+
+Cài đặt icinga2 và các plugin
+
+```
+yum install -y icinga2
+yum install -y nagios-plugins-all
+```
+
+Kích hoạt tính năng Wizard của icinga2 và Khai báo các thông tin cấu hình
+
+```
+icinga2 node wizard
+```
+
+<img src="http://image.prntscr.com/image/ad33363ea26441efa2e644a736147191.png" />
+
+Sau khi xác nhận thông tin, chúng ta chuyển sang Master icinga2 để tạo Ticket cho host
+
+http://prntscr.com/btaeet
+
+Quay trở lại host để paste Ticket, và cho phép nhận các thông tin từ Master (Server Icinga2)
+
+<img src="http://image.prntscr.com/image/d692a934fcc1429380cfe84cc2ba08ab.png" >
+
+Cuối cùng là khởi động lại icinga2 trên host bằng lệnh
+
+```
+service icinga2 restart
+```
+
+##### 2.2.2 Cấu hình trên Master (Server Icinga2)
+
+
+Trên Master, chúng ta liệt kê các host bằng lệnh và cập nhật cấu hình
+
+```
+icinga2 node list
+icinga2 node update-config
+```
+
+<img src="http://image.prntscr.com/image/f08408239aa94e15aee38583c8f47056.png" >
+
+Reload lại các cấu hình trên Master
+
+```
+systemctl reload icinga2
+```
+
+Truy cập vào IcingaWeb2 bằng trình duyệt, chúng ta có thể thấy một host mới ở **Overview > Hosts**
+
+<img src="http://image.prntscr.com/image/476e897cda394422b16901314c7c24bc.png"/>
+
+<a name="manual"></a>
+### Thêm host muốn giám sát bằng Manual
+
